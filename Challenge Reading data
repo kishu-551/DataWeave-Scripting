@@ -1,0 +1,89 @@
+Use what you know about selectors to get the output specified below from this input data.
+
+Input:
+{
+  "id": 1,
+  "id": 11,
+  "secondLevel": {
+    "id": 2,
+    "id": 22,
+    "thirdLevel": {
+      "id": 3,
+      "id": 33
+    }
+  }
+}
+Output:
+{
+  "descendant": [
+    1,
+    2,
+    3
+  ],
+  "multivalue": [
+    1,
+    11
+  ],
+  "multivalueSecondLevel": [
+    2,
+    22
+  ],
+  "multivalueThirdLevel": [
+    3,
+    33
+  ],
+  "allTheIds": [
+    1,
+    11,
+    2,
+    22,
+    3,
+    33
+  ]
+}
+Does the descendant selector select all the keys or just the first one in a nested Object?
+Does the multi-value selector select keys on nested levels of the Object?
+What happens if you combine both descendant and multi-value selectors (..*)?
+ 
+SCRIPT
+
+%dw 2.0
+output json
+---
+{
+    "descendant": payload..id,
+    "multivalue": payload.*id,
+    "multivalueSecondLevel": payload.secondLevel.*id,
+    "multivalueThirdLevel": payload.secondLevel.thirdLevel.*id,
+    "allTheIds" : payload..*id
+}
+
+OUTPUT
+
+{
+  "descendant": [
+    1,
+    2,
+    3
+  ],
+  "multivalue": [
+    1,
+    11
+  ],
+  "multivalueSecondLevel": [
+    2,
+    22
+  ],
+  "multivalueThirdLevel": [
+    3,
+    33
+  ],
+  "allTheIds": [
+    1,
+    11,
+    2,
+    22,
+    3,
+    33
+  ]
+}
