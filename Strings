@@ -1,0 +1,10 @@
+2.1 Use typeOf to produce "String" instead.
+
+SCRIPT
+%dw 2.0
+output json
+---
+typeOf("hello")
+
+OUTPUT
+"String"
