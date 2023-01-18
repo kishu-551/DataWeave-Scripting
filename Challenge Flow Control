@@ -1,0 +1,24 @@
+Pretend you’re developing a flow, and at this point in the flow you have some data that you can use to determine if the application processed the request correctly. You need to output a human-readable message to the caller informing them that everything went as expected, or there was a failure.
+
+If everything went well, the result will contain {"status": "ok"}, if not the result will contain {"status": "failed"}. For the sake of the exercise, this will be available in a result variable you can edit.
+
+Output {"message": "Request successfully processed."} if the status is "ok", and output {"message": "Please try again later."} if the status is anything else. Your solution should be able to compensate for both result types.
+
+Result:
+{"status": "ok"}
+Output:
+{"message": "Request successfully processed."}
+
+SCRIPT
+
+%dw 2.0
+output json
+var result = {"status" : "ok"}
+---
+if(result.status == "ok"){"message" : "Request successfully processed."} else{"message" : "Please try again later."}
+
+OUTPUT
+
+{
+  "message": "Request successfully processed."
+}
