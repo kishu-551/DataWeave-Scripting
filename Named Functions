@@ -1,0 +1,17 @@
+Create an isOddNum function that receives one parameter and returns true if is an odd number or false if not. You can use the mod function in the body of the isOddNum function. It returns the modulo (the remainder after dividing the dividend by the divisor). Use the function to evaluate the value field of the payload:
+
+Input:
+{
+  "value": 2021
+}
+
+SCRIPT
+
+%dw 2.0
+output json
+fun isOddNum(n) = (n mod 2) ==1
+---
+isOddNum(payload.value)
+
+OUTPUT
+true
