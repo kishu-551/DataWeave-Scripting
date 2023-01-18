@@ -1,0 +1,32 @@
+Let's combine what we just learned with what we have also learned about arrays to transform all objects in the following array, so their keys are lower case and their values are upper case.
+
+Input
+[
+  {"First Name": "Max", "Last Name": "The Mule"},
+  {"First Name": "Albert", "Last Name": "Einstein"}
+]
+
+SCRIPT
+%dw 2.0
+output json
+---
+[
+    payload[0-2] mapObject (value, key) ->{
+        (lower(key)) : upper(value)
+    },
+      payload[0-1] mapObject(value,key)->{
+          (lower(key)) : upper(value)
+      }
+]
+
+OUTPUT
+[
+  {
+    "first name": "MAX",
+    "last name": "THE MULE"
+  },
+  {
+    "first name": "ALBERT",
+    "last name": "EINSTEIN"
+  }
+]
