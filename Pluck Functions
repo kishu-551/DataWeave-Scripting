@@ -1,0 +1,77 @@
+Given the input flat representation of multiple product orders and their associated line items, group the orders accordingly as exemplified and prepare them for processing: we want an Array of Arrays, where each internal Array contains the individual line items for a particular order. That way, we will be ready to iteratively scan the outer Array for orders and then doing the same with the line items in the inner Array.
+
+Input
+[
+  {
+    "orderId"  : 1,
+    "customer" : "Josh",
+    "lineId"   : 1,
+    "lineItem" : "Shoes",
+    "price"    : 50
+  },
+  {
+    "orderId"  : 1,
+    "customer" : "Josh",
+    "lineId"   : 2,
+    "lineItem" : "Socks",
+    "price"    : 20
+  },
+  {
+    "orderId"  : 2,
+    "customer" : "Mariano",
+    "lineId"   : 3,
+    "lineItem" : "Shirt",
+    "price"    : 30
+  },
+  {
+    "orderId"  : 2,
+    "customer" : "Mariano",
+    "lineId"   : 4,
+    "lineItem" : "Jacket",
+    "price"    : 80
+  }
+]
+
+SCRIPT
+%dw 2.0
+output json
+---
+payload
+    groupBy ((order, index) -> order.orderId)
+pluck((value)->value)
+
+OUTPUT
+[
+  [
+    {
+      "orderId": 1,
+      "customer": "Josh",
+      "lineId": 1,
+      "lineItem": "Shoes",
+      "price": 50
+    },
+    {
+      "orderId": 1,
+      "customer": "Josh",
+      "lineId": 2,
+      "lineItem": "Socks",
+      "price": 20
+    }
+  ],
+  [
+    {
+      "orderId": 2,
+      "customer": "Mariano",
+      "lineId": 3,
+      "lineItem": "Shirt",
+      "price": 30
+    },
+    {
+      "orderId": 2,
+      "customer": "Mariano",
+      "lineId": 4,
+      "lineItem": "Jacket",
+      "price": 80
+    }
+  ]
+]
