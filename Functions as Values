@@ -1,0 +1,19 @@
+Filter this given array so it contains only numbers that are greater than 3 using a lambda.
+
+Input:
+[0, 5, -32, 4, 66, 776, 3, 10, 1]
+
+SCRIPT
+%dw 2.0
+output json
+---
+filter(payload, (n, idx) -> n>3)
+
+OUTPUT
+[
+  4,
+  66,
+  776,
+  10,
+  5
+]
