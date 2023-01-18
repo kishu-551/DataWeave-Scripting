@@ -1,0 +1,20 @@
+1.2 Modify the output so that the JSON is transformed into a YAML instead of CSV.
+
+SCRIPT
+%dw 2.0
+input payload json
+output yaml 
+---
+payload
+
+OUTPUT
+%YAML 1.2
+---
+-
+  firstName: John
+  lastName: Smith
+  age: 45
+-
+  firstName: Jane
+  lastName: Doe
+  age: 34
