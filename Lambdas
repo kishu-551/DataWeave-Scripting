@@ -1,0 +1,22 @@
+Create and call a lambda function that does the same as the isOddNum function from the previous exercise. The lambda should receive one parameter and return true if that parameter is an odd number, false otherwise. Use the lambda function to evaluate the value field of the payload:
+
+Input:
+{
+  "value": 2021
+}
+
+SCRIPT
+
+%dw 2.0
+output json
+var isOddNum =(n)-> (n mod 2) ==1
+---
+isOddNum(payload.value)
+
+OUTPUT
+
+%dw 2.0
+output json
+var isOddNum =(n)-> (n mod 2) ==1
+---
+isOddNum(payload.value)
