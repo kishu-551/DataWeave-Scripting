@@ -1,0 +1,22 @@
+2.5 Given the input below, string together selections to get to "prod".
+
+Input:
+{
+  "environment": {
+    "stage": "prod"
+  },
+  "host": "linux"
+}
+
+SCRIPT
+%dw 2.0
+output json
+---
+payload.environment.stage
+
+OUTPUT
+
+%dw 2.0
+output json
+---
+payload.environment.stage
