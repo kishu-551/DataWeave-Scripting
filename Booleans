@@ -1,0 +1,24 @@
+2.3 Combine the last few examples to create this output:
+
+{
+  "string": "String",
+  "number": "Number",
+  "boolean": "Boolean"
+}
+
+SCRIPT
+%dw 2.0
+output json
+---
+{
+  "string": typeOf("hello"),
+  "number": typeOf(1),
+  "boolean": typeOf(true)
+}
+
+OUTPUT
+{
+  "string": "String",
+  "number": "Number",
+  "boolean": "Boolean"
+}
