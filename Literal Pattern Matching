@@ -1,0 +1,17 @@
+Use pattern matching to return "Light off" when the status for the input below is 0 or "Light on" when the status is 1.
+
+Input:
+{
+  "id": 290505,
+  "status": 0,
+  "name": "Cabin outdoor light"
+}
+
+SCRIPT
+%dw 2.0
+output json
+---
+if(payload.status == 1) "Light on" else "Light off"
+
+OUTPUT
+"Light off"
