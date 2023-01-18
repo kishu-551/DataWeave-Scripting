@@ -1,0 +1,56 @@
+Let's complete the last challenge again, but this time using a variable to avoid repeated expressions (in this case payload.secondLevel).
+
+Input:
+{
+  "id": 1,
+  "id": 11,
+  "secondLevel": {
+    "id": 2,
+    "id": 22,
+    "thirdLevel": {
+      "id": 3,
+      "id": 33
+    }
+  }
+}
+
+SCRIPT 
+%dw 2.0
+output json
+---
+{
+    "descendant": payload..id,
+    "multivalue": payload.*id,
+    "multivalueSecondLevel": payload.secondLevel.*id,
+    "multivalueThirdLevel": payload.secondLevel.thirdLevel.*id,
+    "allTheIds" : payload..*id
+}
+
+Output
+{
+  "descendant": [
+    1,
+    2,
+    3
+  ],
+  "multivalue": [
+    1,
+    11
+  ],
+  "multivalueSecondLevel": [
+    2,
+    22
+  ],
+  "multivalueThirdLevel": [
+    3,
+    33
+  ],
+  "allTheIds": [
+    1,
+    11,
+    2,
+    22,
+    3,
+    33
+  ]
+}
