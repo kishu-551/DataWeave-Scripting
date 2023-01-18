@@ -1,0 +1,20 @@
+2.5 Use repeated keys to obtain the XML above as output.
+
+SCRIPT
+%dw 2.0
+output xml
+---
+{
+    titles: {
+        title : "Titanic",
+        title : "Avatar"
+    }
+}
+
+OUTPUT
+
+<?xml version='1.0' encoding='UTF-8'?>
+<titles>
+  <title>Titanic</title>
+  <title>Avatar</title>
+</titles>
