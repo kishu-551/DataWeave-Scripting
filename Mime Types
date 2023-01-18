@@ -1,0 +1,19 @@
+1.1 Modify your script so that the CSV output includes the header. Here's what it should look like:
+
+Output:
+firstName,lastName,age
+John,Smith,45
+Jane,Doe,34
+
+SCRIPT
+%dw 2.0
+input payload json
+output csv header=true
+---
+payload
+
+OUTPUT
+firstName,lastName,age
+John,Smith,45
+Jane,Doe,34
+
