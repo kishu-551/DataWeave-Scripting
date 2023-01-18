@@ -1,0 +1,23 @@
+Include a new "sell" action for our example when the price exceeds 140.
+
+Input:
+{
+  "price": 150.00
+}
+
+SCRIPT
+%dw 2.0
+output json
+var action = if (payload.price >140) "sell" else "hold"
+---
+{
+  price  : payload.price,
+  action : action
+}
+
+output
+
+{
+  "price": 150,
+  "action": "sell"
+}
