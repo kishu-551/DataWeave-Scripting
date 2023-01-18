@@ -1,0 +1,23 @@
+Given the following object, remove all key-value pairs with "secret" related keys and false values. You can see in the starting example, the contains function working with Strings which will be helpful.
+
+Input
+{
+    "name": "Jerry",
+    "middle_name": false,
+    "last_name": "Schumann",
+    "secret_key": "903mg20mgg4",
+    "secret_password": "d0n0tH4ckm3PLiZ",
+    "question_secret": "Do you wish to get hacked?",
+    "personal_token": false
+}
+SCRIPT 
+%dw 2.0
+output json
+---
+payload filterObject (value,key,index) -> !((key contains "secret") or  (value contains "false"))
+
+OUTPUT
+{
+  "name": "Jerry",
+  "last_name": "Schumann"
+}
