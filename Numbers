@@ -1,0 +1,10 @@
+2.2 Create a 4 decimal Pi representation.
+
+SCRIPT
+%dw 2.0
+output json
+---
+3.1415 as String {format: '0.0000'} as Number
+
+OUTPUT
+3.1415
