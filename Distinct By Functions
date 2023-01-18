@@ -1,0 +1,45 @@
+Remove the duplicates from the shoppingList variable. You can concatenate the two ID fields into one unique value using the function ++. This should be your output without duplicates:
+
+Output
+[
+  {"orderId": "1", "lineId": "1", "product": "toothpaste"},
+  {"orderId": "1", "lineId": "2", "product": "floss"},
+  {"orderId": "2", "lineId": "3", "product": "toothbrush"},
+  {"orderId": "2", "lineId": "4", "product": "mouth wash"}
+]
+
+SCRIPT
+%dw 2.0
+output json
+var shoppingList = [
+  {"orderId": "1", "lineId": "1", "product": "toothpaste"},
+  {"orderId": "1", "lineId": "2", "product": "floss"},
+  {"orderId": "2", "lineId": "3", "product": "toothbrush"},
+  {"orderId": "2", "lineId": "4", "product": "mouth wash"},
+  {"orderId": "2", "lineId": "4", "product": "mouth wash"}
+]
+---
+shoppingList distinctBy $
+OUTPUT
+[
+  {
+    "orderId": "1",
+    "lineId": "1",
+    "product": "toothpaste"
+  },
+  {
+    "orderId": "1",
+    "lineId": "2",
+    "product": "floss"
+  },
+  {
+    "orderId": "2",
+    "lineId": "3",
+    "product": "toothbrush"
+  },
+  {
+    "orderId": "2",
+    "lineId": "4",
+    "product": "mouth wash"
+  }
+]
