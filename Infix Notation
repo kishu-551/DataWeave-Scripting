@@ -1,0 +1,21 @@
+Filter this given array to contain only numbers that are multiples of 5 using a lambda with infix notation.
+
+Input:
+[4, 5, 32, 30, 45, 776, 1040, 103, 105]
+
+SCRIPT 
+%dw 2.0
+output json
+var n = payload
+---
+n
+filter(n,idx)->(n mod 5)==0
+
+OUTPUT
+[
+  5,
+  30,
+  45,
+  1040,
+  105
+]
