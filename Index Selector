@@ -1,0 +1,14 @@
+Given the following input, get to "qa".
+
+Input:
+["prod", ["qa", "dev"]]
+
+SCRIPT
+
+%dw 2.0
+output json
+---
+payload[-1][0]
+
+OUTPUT
+"qa"
