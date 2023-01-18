@@ -1,0 +1,17 @@
+2.4 Create an array of the first 5 prime numbers.
+
+SCRIPT
+%dw 2.0
+output json
+---
+[2,3,5,7,11]
+
+OUTPUT
+[
+  2,
+  3,
+  5,
+  7,
+  11
+]
+
