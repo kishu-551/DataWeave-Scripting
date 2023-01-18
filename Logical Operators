@@ -1,0 +1,15 @@
+Use operators to return true if the name field of your input is "Max".
+
+Input:
+{
+    "name": "Max"
+}
+
+SCRIPT
+%dw 2.0
+output json
+---
+payload.name=="Max"
+
+OUTPUT
+true
