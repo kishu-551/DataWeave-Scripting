@@ -1,0 +1,39 @@
+Update the user data below. Usernames should be all lower case and the street should be "Fiskargatan".
+
+Input
+{
+  "username": "WASP",
+  "name": "Lisbeth",
+  "surname": "Salander",
+  "location": {
+      "address": {
+          "street": "Lundagatan",
+          "number": 9
+      },
+      "city": "Stockholm",
+      "country": "Sweden"
+  }
+}
+
+SCRIPT
+%dw 2.0
+output json
+---
+payload update {
+    case currentusername at .username -> lower(currentusername)
+    case currentusername at .location.address.street ->"Fiskargatan"
+}
+OUTPUT
+{
+  "username": "wasp",
+  "name": "Lisbeth",
+  "surname": "Salander",
+  "location": {
+    "address": {
+      "street": "Fiskargatan",
+      "number": 9
+    },
+    "city": "Stockholm",
+    "country": "Sweden"
+  }
+}
