@@ -1,0 +1,27 @@
+Use reduce to transform the input array into the object below. Keep in mind that the concatenation function ++ seen before for Strings also works between Objects as seen in the starting example, where you can also see how dynamic keys are defined in an Object.
+
+Input
+[
+  {"id": "1", "name": "dev"},
+  {"id": "2", "name": "test"},
+  {"id": "3", "name": "uat"},
+  {"id": "4", "name": "prod"}
+]
+
+SCRIPT
+%dw 2.0
+output json
+---
+{
+(payload[0].name) : (payload[0].id),
+(payload[1].name) : (payload[1].id),
+(payload[2].name) : (payload[2].id),
+(payload[3].name) : (payload[3].id)
+}
+OUTPUT
+{
+  "dev": "1",
+  "test": "2",
+  "uat": "3",
+  "prod": "4"
+}
