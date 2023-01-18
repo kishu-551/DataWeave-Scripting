@@ -1,0 +1,23 @@
+Use the multi-value selector to get an Array of all title values in this input:
+
+Input:
+<movies>
+  <title>The Terminator</title>
+  <title>Titanic</title>
+  <title>Avatar</title>
+  <director>James Cameron</director>
+</movies>
+
+SCRIPT
+
+%dw 2.0
+output json
+---
+payload.movies.*title
+
+OUTPUT
+[
+  "The Terminator",
+  "Titanic",
+  "Avatar"
+]
